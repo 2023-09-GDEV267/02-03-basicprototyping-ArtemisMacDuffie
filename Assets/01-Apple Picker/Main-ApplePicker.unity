@@ -364,33 +364,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1858225703525668201, guid: cb1d39f3c2431454b89142f91efce733, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 527167142407377208}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1d39f3c2431454b89142f91efce733, type: 3}
---- !u!1 &527167142407377207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1858225703525668201, guid: cb1d39f3c2431454b89142f91efce733, type: 3}
-  m_PrefabInstance: {fileID: 527167142407377206}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &527167142407377208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527167142407377207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f884835689b4e524bbea8b8cf9a0d850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applePrefab: {fileID: 4617122649486038436, guid: 028ee74580564c841ba792dde3540296, type: 3}
-  speed: 1
-  lefAndRightEdge: 10
-  chanceToChangeDirections: 0.1
-  secondsBetweenAppleDrops: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
