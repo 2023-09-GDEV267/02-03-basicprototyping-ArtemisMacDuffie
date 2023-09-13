@@ -7,12 +7,12 @@ public class AppleTree : MonoBehaviour
     public GameObject applePrefab;
     public float speed = 1f;
     public float leftAndRightEdge = 10f;
-    public float chanceToChangeDirections = 0.1f;
+    public float chanceToChangeDirections = 1f;
     public float secondsBetweenAppleDrops = 1f;
 
     void Start()
     {
-        
+        Invoke("DropApple", 2f);
     }
 
     void Update()
@@ -32,7 +32,7 @@ public class AppleTree : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         //random direction change
         if (Random.value < chanceToChangeDirections)
@@ -40,4 +40,13 @@ public class AppleTree : MonoBehaviour
             speed *= -1;
         }
     }
+
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
+    }
+
+
 }
