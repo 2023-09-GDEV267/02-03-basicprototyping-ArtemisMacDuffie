@@ -86,7 +86,6 @@ public class ProjectileLine : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (poi == null)
@@ -97,10 +96,10 @@ public class ProjectileLine : MonoBehaviour
                 {
                     poi = FollowCam.POI;
                 }
+                else return;
             }
             else return;
         }
-        else return;
 
         AddPoint();
 
