@@ -33,7 +33,8 @@ public class MissionDemolition : MonoBehaviour
     {
         S = this;
         level = 0;
-        level = castles.Length;
+        levelMax = castles.Length;
+        StartLevel();
     }
 
     void StartLevel()
