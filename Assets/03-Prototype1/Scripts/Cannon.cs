@@ -11,12 +11,12 @@ public class Cannon : MonoBehaviour
     public float shootChance = 0.01f;
     public float minTimeBetweenShots = 0.5f;
 
-    [Header("Set dynamically")]
-    public Vector3 launchPos;
-    public Vector3 launchAngle;
+    private Vector3 launchPos;
+    private Vector3 launchAngle;
     private Rigidbody bombBody;
     private GameObject weedBomb;
     private float timeSinceLastShot;
+    private bool fireReady;
 
     void Start()
     {
@@ -25,24 +25,31 @@ public class Cannon : MonoBehaviour
         launchAngle.y = 1;
         launchAngle.z = 0;
         timeSinceLastShot = 0f;
+        fireReady = false;
     }
 
     void FixedUpdate()
     {
-        if (Random.value < shootChance
-            && timeSinceLastShot > minTimeBetweenShots)
+        if (fireReady)
         {
-            weedBomb = Instantiate(bombPrefab);
-            weedBomb.transform.position = launchPos;
-            int power = Random.Range(minPow, maxPow);
-            bombBody = weedBomb.GetComponent<Rigidbody>();
-            bombBody.velocity = launchAngle * power;
-            weedBomb = null;
-            timeSinceLastShot = 0f;
+            if (Random.value < shootChance
+                && timeSinceLastShot > minTimeBetweenShots)
+            {
+                weedBomb = Instantiate(bombPrefab);
+                weedBomb.transform.position = launchPos;
+                int power = Random.Range(minPow, maxPow);
+                bombBody = weedBomb.GetComponent<Rigidbody>();
+                bombBody.velocity = launchAngle * power;
+                weedBomb = null;
+                timeSinceLastShot = 0f;
+            }
+            else
+            {
+                timeSinceLastShot += Time.deltaTime;
+            }
         }
-        else
-        {
-            timeSinceLastShot += Time.deltaTime;
-        }
+
+        else if (Time.time > 2)
+            fireReady = true;
     }
 }

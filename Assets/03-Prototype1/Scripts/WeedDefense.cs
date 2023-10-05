@@ -8,6 +8,7 @@ public class WeedDefense : MonoBehaviour
 {
     public int bedsLost;
     public Text score;
+    public GameObject gameOver;
 
     void Start()
     {
@@ -18,7 +19,8 @@ public class WeedDefense : MonoBehaviour
     {
         if (bedsLost == 5)
         {
-            SceneManager.LoadScene("Main-Prototype 1");
+            gameOver.SetActive(true);
+            Invoke("Restart", 2f);
         }
 
         UpdateGUI();
@@ -32,5 +34,10 @@ public class WeedDefense : MonoBehaviour
     public void LostABed()
     {
         bedsLost++;
+    }
+    
+    private void Restart()
+    {
+        SceneManager.LoadScene("Main-Prototype 1");
     }
 }
