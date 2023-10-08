@@ -8,18 +8,25 @@ public class WeedDefense : MonoBehaviour
 {
     public int bedsLost;
     public Text score;
+    public Text currentTime;
     public GameObject gameOver;
+    private string lifespan;
+    private bool defeat;
 
     void Start()
     {
         bedsLost = 0;
+        defeat = false;
+        UpdateGUI();
     }
 
     void Update()
     {
-        if (bedsLost == 5)
+        if (bedsLost == 5 && !defeat)
         {
             gameOver.SetActive(true);
+            defeat = true;
+            lifespan = "Time survived: " + string.Format("{0:0.00}", Time.time) + "s";
             Invoke("Restart", 2f);
         }
 
@@ -29,6 +36,15 @@ public class WeedDefense : MonoBehaviour
     void UpdateGUI()
     {
         score.text = "Surviving flowerbeds: " + (5 - bedsLost);
+
+        if (defeat)
+        {
+            currentTime.text = lifespan;
+        }
+        else
+        {
+            currentTime.text = "Time survived: " + string.Format("{0:0.00}", Time.time) + "s";
+        }
     }
 
     public void LostABed()
